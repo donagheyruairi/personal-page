@@ -1,21 +1,25 @@
 @import 'tailwindcss';
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #FFFFFF;
+  --foreground: #363636;
 }
 
 @theme inline {
+  --breakpoint-xs: 30rem;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-primary: #242F40;
+  --color-secondary: #CCA43B;
+  --color-tertiary: #E5E5E5;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #363636;
+    --foreground: #FFFFFF;
   }
 }
 
@@ -25,30 +29,67 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-main {
+/* main {
   @apply min-h-screen;
-}
+} */
 
 main h1 {
-  @apply text-3xl font-semibold;
+  @apply text-4xl md:text-6xl font-semibold;
 }
 
 h2 {
-  @apply text-2xl;
+  @apply text-2xl text-center;
+}
+
+p {
+  @apply text-lg;
 }
 
 nav a {
   @apply transition-all duration-300;
 }
 
+@keyframes slideShow {
+  from {
+    transform: translateY(0)
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+main.home > section:first-child > div > div {
+  animation: slideShow 30s linear infinite
+}
+
+/* main.home > section:first-child > div > div:nth-child(2n+1) {
+  animation: slideShow 30s linear infinite reverse
+} */
+
+main.home > section:first-child > div > div:nth-child(2) {
+  @apply -translate-y-6
+}
+
+main.home > section:first-child img {
+  @apply w-full p-2
+}
+
+main.cv > section:nth-child(2) h2 {
+  @apply p-2;
+}
+
 main.cv > section:nth-child(2) > div {
-  @apply rounded border-2 bg-blue-100 p-4;
+  @apply max-md:min-h-[calc(100svh-164px)] py-2 flex flex-col gap-2;
 }
 
-main.cv > section:nth-child(2) > div > h2 {
-  @apply mx-auto w-fit;
+main.cv > section:nth-child(2) > div > a {
+  @apply w-full grow;
 }
 
-main.cv > section:nth-child(2) > div > img {
-  @apply max-w-3/4 mx-auto my-2 h-20 w-auto;
+main.cv > section:nth-child(2) img {
+  @apply w-full h-full;
+}
+
+main.cv > section:nth-child(2) ul {
+  @apply list-inside list-disc;
 }
