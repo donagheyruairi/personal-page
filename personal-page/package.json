@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "full": "next build && next start"
+    "full": "next build && npx serve@latest out"
   },
   "dependencies": {
     "next": "^16.1.6",
