@@ -22,13 +22,13 @@ export default function Header() {
         </Link>
         <Link
           href="/cv"
-          className={pathname == '/cv' ? '' : 'scale-90 opacity-80'}
+          className={pathname == '/cv/' ? '' : 'scale-90 opacity-80'}
         >
           CV
         </Link>
         <Link
           href="/blog"
-          className={pathname == '/blog' ? '' : 'scale-90 opacity-80'}
+          className={pathname == '/blog/' ? '' : 'scale-90 opacity-80'}
         >
           Blog
         </Link>
