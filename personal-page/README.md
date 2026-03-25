@@ -8,7 +8,7 @@ Then run the project, use `npm run dev` for dev mode or `npm run full` to build 
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-If you are attempting to edit the music widget in the Blog page, you will also need to get access to the Spotify API, and add an ID and SECRET to a `.env` file in the root folder.
+If you are attempting to edit the music widget in the Blog page, you will also need to get access to the Spotify API, and add an ID and SECRET to a `.env` file in the root folder. This will require Spotify premium.
 
 ## Learn Next.js
 
