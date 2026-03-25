@@ -20,6 +20,9 @@ jobs:
 
       - run: cd personal-page
 
+      # ls for debug 
+      - run: ls
+
       - name: Install Deps
         run: npm install
 
