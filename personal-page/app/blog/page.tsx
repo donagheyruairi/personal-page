@@ -1,65 +1,7 @@
-import albumData from '@/components/AlbumList';
+import { Albums } from '@/public/blog/music-widget/album-cache.json';
 import { Open_Sans } from 'next/font/google';
 
 const openSans = Open_Sans({ subsets: ['latin'] });
-
-// const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
-// const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
-
-// const accessTokenRes = await fetch('https://accounts.spotify.com/api/token', {
-//   method: 'POST',
-//   headers: {
-//     'Content-Type': 'application/x-www-form-urlencoded',
-//   },
-//   body: 'grant_type=client_credentials&client_id=' + CLIENT_ID + '&client_secret=' + CLIENT_SECRET,
-//   next: { revalidate: 3600 },
-// });
-
-// const { access_token } = await accessTokenRes.json();
-
-const albums = await Promise.all(albumData.map(async (album) => {
-//   const res = await fetch(`https://api.spotify.com/v1/search?type=album&limit=1&q=${encodeURIComponent(album.name)}%2B${encodeURIComponent(album.artist)}`, {
-//     headers: {
-//       Authorization: `Bearer ${access_token}`,
-//     },
-//   });
-
-  // const resJson: {
-  //   albums: {
-  //     items: {
-  //       name: string
-  //       release_date: string
-  //       artists: { name: string }[]
-  //       images: { url: string }[]
-  //       external_urls: { spotify: string }
-  //     }[]
-  //   }
-  // } = await res.json();
-
-  // return {
-  //   name: resJson.albums.items[0].name || ,
-  //   artist: resJson.albums.items[0].artists[0].name,
-  //   release_date: resJson.albums.items[0].release_date,
-  //   image: resJson.albums.items[0].images[0].url,
-  //   rating: album.rating,
-  //   date: album.date,
-  //   aotyAlbumID: album.aotyAlbumID,
-  //   aotyArtistID: album.aotyArtistID,
-  //   url: resJson.albums.items[0].external_urls.spotify,
-  // };
-
-  return {
-    name: album.name,
-    artist: album.artist,
-    release_date: '',
-    image: '',
-    rating: album.rating,
-    date: album.date,
-    aotyAlbumID: album.aotyAlbumID,
-    aotyArtistID: album.aotyArtistID,
-    url: '',
-  };
-}));
 
 export default async function Blog() {
   return (
@@ -72,7 +14,7 @@ export default async function Blog() {
       </section>
       <section className={'bg-[#202225] text-[#DCDDDE] w-[calc(100%-16px)] lg:w-[calc(50%-16px)] lg:h-[calc(100dvh-189px)] overflow-y-scroll m-2 inline-block ' + openSans.className}>
         <h2 className="pt-4">Some of my top albums</h2>
-        <p className="px-3.75 xs:px-5">I&apos;m a big fan of these albums. Click on them to see their AOTY page and my review, or use the Spotify button to listen to them yourself. (No album artwork or Spotify links for the moment. Fighting with Spotify API limiting.)</p>
+        <p className="px-3.75 xs:px-5">I&apos;m a big fan of these albums. Click on them to see their AOTY page and my review, or use the Spotify button to listen to them yourself.</p>
         <div className="my-3.75 flex h-8 md:h-10 justify-evenly">
           <a
             href="https://open.spotify.com/"
@@ -128,7 +70,7 @@ export default async function Blog() {
           </div>
         </div>
         {
-          albums.map(album => (
+          Albums.map(album => (
             <div key={album.aotyAlbumID} className="w-1/3 px-[3%] pt-2.5 pb-3.75 mb-3.75 lg:w-1/6 lg:px-[1%] inline-block">
               <a
                 href={'https://www.albumoftheyear.org/album/' + album.aotyAlbumID + '.php'}

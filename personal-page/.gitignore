@@ -12,6 +12,7 @@
 
 # testing
 /coverage
+/php-test
 
 # next.js
 /.next/
@@ -23,6 +24,7 @@
 # misc
 .DS_Store
 *.pem
+**album-cache.json
 
 # debug
 npm-debug.log*
