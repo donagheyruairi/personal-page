@@ -1,9 +1,32 @@
-import { Albums } from '@/public/blog/music-widget/album-cache.json';
+'use client';
+
 import { Open_Sans } from 'next/font/google';
+import { useEffect, useState } from 'react';
 
 const openSans = Open_Sans({ subsets: ['latin'] });
 
-export default async function Blog() {
+export default function Blog() {
+  const [Albums, setAlbums] = useState<{
+    name: string
+    artist: string
+    release_date: string
+    image: string
+    rating: string
+    date: string
+    aotyAlbumID: string
+    aotyArtistID: string
+    url: string
+  }[]>([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const res = await fetch('/blog/music-widget/album-cache.json');
+      const resJson = await res.json();
+      setAlbums(resJson['Albums']);
+    }
+    fetchData();
+  }, []);
+
   return (
     <main>
       <section className="p-4 border-b">
